@@ -1,0 +1,36 @@
+{
+  "name": "grib2json-ts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "bin": {
+    "grib2json": "dist/bin.js"
+  },
+  "type": "commonjs",
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest --config ./vitest.config.ts",
+    "data:size": "stat -c \"%s %n\" data/*.grib2 data/*.json data/*.gz | numfmt --to=iec",
+    "data:clean": "rm -f data/*.{json,gz}",
+    "bin:test": "node --loader ts-node/esm src/bin.ts --compact --data --output data/output-js.json data/EU-ground-temperature.grib2 && gzip -kf data/output-js.json",
+    "bin:test:raw": "node --loader ts-node/esm src/bin.ts --data --output data/output-js-raw.json data/EU-ground-temperature.grib2 && gzip -kf data/output-js-raw.json",
+    "bin:test:all": "yarn bin:test && yarn bin:test:raw && yarn data:size",
+    "bin:preview": "node dist/bin.js --compact --data --output data/output-js.json data/EU-ground-temperature.grib2 && gzip -kf data/output-js.json",
+    "bin:preview:raw": "node dist/bin.js --data --output data/output-js-raw.json data/EU-ground-temperature.grib2 && gzip -kf data/output-js-raw.json",
+    "bin:preview:all": "yarn build && yarn bin:preview && yarn bin:preview:raw && yarn data:size"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^13.1.0",
+    "fs-extra": "^11.3.0"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "@types/node": "^22.15.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.8.3",
+    "vitest": "^3.1.2"
+  }
+}
