@@ -12,9 +12,9 @@
     "test": "vitest --config ./vitest.config.ts",
     "data:size": "stat -c \"%s %n\" data/*.grib2 data/*.json data/*.gz | numfmt --to=iec",
     "data:clean": "rm -f data/*.{json,gz}",
-    "bin": "node dist/bin.js --data --output data/output.json data/EU-ground-temperature.grib2 && gzip -kf data/output.json",
+    "bin:out": "node dist/bin.js --data --output data/output.json data/EU-ground-temperature.grib2 && gzip -kf data/output.json",
     "bin:compact": "node dist/bin.js --compact --data --output data/output-compact.json data/EU-ground-temperature.grib2 && gzip -kf data/output-compact.json",
-    "bin:all": "yarn build && yarn bin && yarn bin:compact && yarn data:size"
+    "bin:all": "yarn build && yarn bin:out && yarn bin:compact && yarn data:size"
   },
   "keywords": [],
   "author": "",
