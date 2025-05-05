@@ -14,7 +14,7 @@
     "data:clean": "rm -f data/*.{json,gz}",
     "bin": "node dist/bin.js --data --output data/output.json data/EU-ground-temperature.grib2 && gzip -kf data/output.json",
     "bin:compact": "node dist/bin.js --compact --data --output data/output-compact.json data/EU-ground-temperature.grib2 && gzip -kf data/output-compact.json",
-    "bin:all": "yarn build && yarn bin:preview && yarn bin:preview:compact && yarn data:size"
+    "bin:all": "yarn build && yarn bin && yarn bin:compact && yarn data:size"
   },
   "keywords": [],
   "author": "",
