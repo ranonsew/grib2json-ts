@@ -9,7 +9,6 @@
   "type": "commonjs",
   "scripts": {
     "build": "tsc",
-    "test": "vitest --config ./vitest.config.ts",
     "data:size": "stat -c \"%s %n\" data/*.grib2 data/*.json data/*.gz | numfmt --to=iec",
     "data:clean": "rm -f data/*.{json,gz}",
     "bin:out": "node dist/bin.js --data --output data/output.json data/EU-ground-temperature.grib2 && gzip -kf data/output.json",
@@ -27,7 +26,6 @@
     "@types/fs-extra": "^11.0.4",
     "@types/node": "^22.15.3",
     "ts-node": "^10.9.2",
-    "typescript": "^5.8.3",
-    "vitest": "^3.1.2"
+    "typescript": "^5.8.3"
   }
 }
