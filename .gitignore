@@ -60,3 +60,5 @@ data/*.json
 data/*.gz
 data/*.7z
 data/*.zip
+
+.devcontainer/cert/
